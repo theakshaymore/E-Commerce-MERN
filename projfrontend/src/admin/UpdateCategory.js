@@ -8,6 +8,7 @@ const UpdateCategory = ({ match }) => {
   const [name, setName] = useState("");
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { user, token } = isAutheticated();
 
@@ -47,6 +48,7 @@ const UpdateCategory = ({ match }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
+    setLoading(true);
     setError("");
     setSuccess(false);
 
@@ -55,7 +57,9 @@ const UpdateCategory = ({ match }) => {
       (data) => {
         if (data.error) {
           setError(data.error);
+          setLoading(false);
         } else {
+          setLoading(false);
           setName(data.name);
           setError("");
           setSuccess(true);
@@ -79,6 +83,16 @@ const UpdateCategory = ({ match }) => {
       return (
         <div className="alert alert-danger mt-2">
           <h5 className="text-danger">Failed to update category!</h5>
+        </div>
+      );
+    }
+  };
+
+  const loadingMessage = () => {
+    if (loading) {
+      return (
+        <div className="alert alert-warning">
+          <h5 className="text-dark">Please wait...</h5>
         </div>
       );
     }
@@ -121,6 +135,7 @@ const UpdateCategory = ({ match }) => {
           <div className="col-md-8 offset-md-2">
             {warningMessage()}
             {successMessage()}
+            {loadingMessage()}
             {myCategoryForm()}
           </div>
         </div>

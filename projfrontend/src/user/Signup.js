@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Base from "../core/Base";
 import { Link } from "react-router-dom";
 import { signup } from "../auth/helper";
+import SignupSVG from "../imgs/signup.svg";
 
 const Signup = () => {
   const [values, setValues] = useState({
@@ -41,10 +42,12 @@ const Signup = () => {
 
   const signUpForm = () => {
     return (
-      <div className="row">
-        <div className="col-md-6 offset-sm-3 text-left">
+      <div className="row mt-5 pt-5 gx-0">
+        <div className="container col-lg-5 col-md-6 col-sm-12 text-left">
+          <h2 className="h1 text-center cart-totalbox">Sign up</h2>
+          <p className="lead text-center my-text">Create an Embrand Account!</p>
           <form>
-            <div className="form-group">
+            <div className="form-group mt-5">
               <label className="text-dark">Name</label>
               <input
                 onChange={handleChange("name")}
@@ -74,11 +77,19 @@ const Signup = () => {
             </div>
             <button
               onClick={onSubmit}
-              className="btn col-12 rounded mt-4 my-login-btn "
+              className="btn col-12 rounded mt-4 cart-totalbox my-btn2"
             >
               Sign Up
+              <lord-icon
+                src="https://cdn.lordicon.com/qvzrpodt.json"
+                trigger="loop"
+                colors="primary:#FFFFFF,secondary:#FFFFFF"
+              ></lord-icon>
             </button>
           </form>
+        </div>
+        <div className="container col-lg-5 col-md-6 col-sm-12 ">
+          <img src={SignupSVG} alt="React Logo" height="500" width="500" />
         </div>
       </div>
     );
@@ -116,7 +127,11 @@ const Signup = () => {
   };
 
   return (
-    <Base title="Sign up" description="Create an Embrand Account!">
+    <Base
+      // title="Sign up"
+      // description="Create an Embrand Account!"
+      footer={false}
+    >
       {successMessage()}
       {errorMessage()}
       {signUpForm()}

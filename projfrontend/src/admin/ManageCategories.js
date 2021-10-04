@@ -37,7 +37,7 @@ const ManageCategories = () => {
     <Base
       title="Manage Categories"
       description="Update category for tshirts"
-      className="container p-4 rounded my-profile-card"
+      className="mx-2"
     >
       <div className="card border-0">
         <Link to={`/admin/dashboard`}>
@@ -46,39 +46,45 @@ const ManageCategories = () => {
             Admin Home
           </button>
         </Link>
-        <h4 className="card-header text-white my-3 rounded profile-card-header">
-          <i class="bi bi-arrow-return-right me-2"></i>
-          All Categories
-        </h4>
-        <div className="row">
+
+        <div className="row mt-5">
           <div className="col-12">
-            {categories.map((category, index) => {
-              return (
-                <div key={index} className="row text-center">
-                  <div className="col-4 list-group-item">
-                    <h3 className="text-dark text-start">{category.name}</h3>
-                  </div>
-                  <div className="col-4 list-group-item">
-                    <Link
-                      className="btn btn-warning rounded"
-                      to={`/admin/category/update/${category._id}`}
-                    >
-                      <span>Update</span>
-                    </Link>
-                  </div>
-                  <div className="col-4 list-group-item">
-                    <button
-                      onClick={() => {
-                        deleteThisCategory(category._id);
-                      }}
-                      className="btn btn-danger rounded"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
+            <table class="table table-striped">
+              <thead className="bg-dark text-white lead">
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Update category</th>
+                  <th scope="col">Delete category</th>
+                </tr>
+              </thead>
+              <tbody>
+                {categories.map((category, index) => {
+                  return (
+                    <tr key={index}>
+                      <td className="text-success">{category.name}</td>
+                      <td>
+                        <Link
+                          className="btn btn-sm btn-success"
+                          to={`/admin/category/update/${category._id}`}
+                        >
+                          <span>Update</span>
+                        </Link>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => {
+                            deleteThisCategory(category._id);
+                          }}
+                          className="btn btn-sm btn-success"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

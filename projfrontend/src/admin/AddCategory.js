@@ -8,6 +8,7 @@ const AddCategory = () => {
   const [name, setName] = useState("");
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { user, token } = isAutheticated();
 
@@ -15,10 +16,10 @@ const AddCategory = () => {
     return (
       <div className="mt-1">
         <Link
-          className="btn btn-sm btn-dark mb-3 rounded"
+          className="btn btn-sm btn-danger mb-3 rounded"
           to="/admin/dashboard"
         >
-          <i className="bi bi-arrow-left-short text-white" />
+          <i class="fas fa-home me-2" />
           Admin Home
         </Link>
       </div>
@@ -32,14 +33,17 @@ const AddCategory = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
+    setLoading(true);
     setError("");
     setSuccess(false);
 
     // Backend request
     createCategory(user._id, token, { name }).then((data) => {
       if (data.error) {
+        setLoading(false);
         setError(data.error);
       } else {
+        setLoading(false);
         setError("");
         setSuccess(true);
         setName("");
@@ -67,6 +71,16 @@ const AddCategory = () => {
     }
   };
 
+  const loadingMessage = () => {
+    if (loading) {
+      return (
+        <div className="alert alert-warning">
+          <h5 className="text-dark">Please wait...</h5>
+        </div>
+      );
+    }
+  };
+
   const myCategoryForm = () => {
     return (
       <form>
@@ -86,7 +100,7 @@ const AddCategory = () => {
             onClick={onSubmit}
           >
             Create Category
-            <i class="bi bi-plus-circle-fill m-1" />
+            <i class="fas fa-plus-circle ms-2" />
           </button>
         </div>
       </form>
@@ -104,6 +118,7 @@ const AddCategory = () => {
         <div className="col-md-8 offset-md-2">
           {successMessage()}
           {warningMessage()}
+          {loadingMessage()}
           {myCategoryForm()}
         </div>
       </div>

@@ -50,16 +50,16 @@ const CardForCart = ({
             removeItemFromCart(product._id);
             setReload(!reload);
           }}
-          className="btn btn-sm btn-danger"
+          className="btn rounded px-3 my-btn2"
         >
-          Remove from cart
+          <i class="fas fa-trash-alt" />
         </button>
       )
     );
   };
 
   return (
-    <div className="card text-dark text-start border-0 mt-2 border-bottom border-end">
+    <div className="card text-dark text-start border-0 mt-2 mb-5 border-bottom border-end">
       <div className="row no-gutters">
         <div className="col-sm-5">
           {getARedirect(redirect)}
@@ -69,13 +69,26 @@ const CardForCart = ({
         </div>
         <div className="col-sm-7">
           <div className="card-body">
-            <p className="card-title font-weight-normal text-wrap">
-              <b> NAME:</b> {cartTitle}
-            </p>
-            <p>
-              <b>PRICE:</b> {cartPrice} $
-            </p>
-            <div>{showRemoveFromCart(removeFromCart)}</div>
+            <div class="d-flex justify-content-between">
+              <div>
+                <h5>{cartTitle}</h5>
+                <p class="mb-2 text-muted text-uppercase small">
+                  Category - {product.category.name}
+                </p>
+                <p class="mb-2 text-muted text-uppercase small">Size: M</p>
+                <p class="mb-2 text-muted text-uppercase small">
+                  Price: <i className="fas fa-rupee-sign"></i>
+                  {cartPrice}
+                </p>
+                <p class="mb-2 text-muted small">
+                  <i class="fas fa-check text-success me-1"></i>
+                  In stock
+                </p>
+              </div>
+              <div>
+                <div>{showRemoveFromCart(removeFromCart)}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

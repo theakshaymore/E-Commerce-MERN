@@ -37,48 +37,54 @@ const ManageProducts = () => {
     <Base
       title="Manage Products"
       description="Update and Delete products here"
-      className="container p-4 rounded my-profile-card"
+      className="mx-2"
     >
       <div className="card border-0">
         <Link to={`/admin/dashboard`}>
           <button className="btn btn-dark">
-            <i className="bi bi-arrow-left-short text-white" />
+            <i class="fas fa-home me-2" />
             Admin Home
           </button>
         </Link>
-        <h2 className="card-header text-white my-3 rounded profile-card-header">
-          <i class="bi bi-arrow-return-right me-2"></i>
-          All products:
-        </h2>
-        <div className="row">
+
+        <div className="row mt-5">
           <div className="col-12">
-            {products.map((product, index) => {
-              return (
-                <div key={index} className="row text-center">
-                  <div className="col-4 list-group-item">
-                    <h3 className="text-dark text-start">{product.name}</h3>
-                  </div>
-                  <div className="col-4 list-group-item">
-                    <Link
-                      className="btn btn-warning rounded"
-                      to={`/admin/product/update/${product._id}`}
-                    >
-                      <span>Update</span>
-                    </Link>
-                  </div>
-                  <div className="col-4 list-group-item">
-                    <button
-                      onClick={() => {
-                        deleteThisProduct(product._id);
-                      }}
-                      className="btn btn-danger rounded"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
+            <table class="table table-striped">
+              <thead className="bg-dark text-white lead">
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Update Product</th>
+                  <th scope="col">Delete product</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((product, index) => {
+                  return (
+                    <tr key={index}>
+                      <td className="">{product.name}</td>
+                      <td>
+                        <Link
+                          className="btn btn-sm btn-success"
+                          to={`/admin/product/update/${product._id}`}
+                        >
+                          <span>Update</span>
+                        </Link>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => {
+                            deleteThisProduct(product._id);
+                          }}
+                          className="btn btn-sm btn-success"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

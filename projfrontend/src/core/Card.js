@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ImageHelper from "./helper/ImageHelper";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { addItemToCart, removeItemFromCart } from "./helper/cartHelper";
 
 const Card = ({
@@ -13,32 +13,53 @@ const Card = ({
 }) => {
   const [redirect, setRedirect] = useState(false);
   const [count, setCount] = useState(product.count);
+  const [addedbtn, setAddedbtn] = useState(false);
 
   const cartTitle = product ? product.name : "Product";
   const cartDescrption = product ? product.description : "Product description";
   const cartPrice = product ? product.price : "Product Price";
+  const cartCategory = product ? product.category.name : "summer";
 
   const addToCart = () => {
+    setAddedbtn(true);
     addItemToCart(product, () => setRedirect(true));
   };
 
   const getARedirect = (redirect) => {
     if (redirect) {
-      return <Redirect to="/cart" />;
+      return <Redirect to="/cartdetails" />;
     }
   };
 
   const showAddToCart = (addtoCart) => {
     return (
       addtoCart && (
-        <button
-          onClick={addToCart}
-          className="btn btn-block col-12 mt-2  rounded my-btn"
-        >
-          Add to Cart
-          {/* <i className="bi bi-bag add-cart-icon" /> */}
+        <button onClick={addToCart} className="col-5 btn rounded m-1 my-btn">
+          <i class="fas fa-shopping-cart pe-1"></i>
+          Cart
+          {/* <lord-icon
+            src="https://cdn.lordicon.com/mecwbjnp.json"
+            trigger="loop"
+            colors="primary:#ffffff,secondary:#ffffff"
+          ></lord-icon> */}
+          <lord-icon
+            src="https://cdn.lordicon.com/jvihlqtw.json"
+            trigger="loop"
+            colors="primary:#ffffff,secondary:#ffffff"
+          ></lord-icon>
         </button>
       )
+    );
+  };
+
+  const showAddedButton = () => {
+    return (
+      <button onClick={addToCart} className="col-5 btn rounded m-1 btn-success">
+        <span>
+          Added
+          <i class="fas fa-thumbs-up ps-2"></i>
+        </span>
+      </button>
     );
   };
 
@@ -52,6 +73,7 @@ const Card = ({
           }}
           className="btn rounded my-btn  "
         >
+          <i className="fas fa-shopping-cart pr-2"></i>
           Remove from cart
         </button>
       )
@@ -59,37 +81,50 @@ const Card = ({
   };
 
   return (
-    <div className="card text-dark my-card">
-      {/* <div className="card-header lead">{cartTitle}</div> */}
-      <div className="card-body">
-        {getARedirect(redirect)}
-        <ImageHelper product={product} />
-        <p className="lead font-weight-normal text-wrap">{cartTitle}</p>
-        <p className="text-wrap text-start ms-3">{cartDescrption}</p>
-        <p className="text-center">
+    <div className="card my-card">
+      <ImageHelper product={product} />
+      <div className="card-body text-center">
+        {/* {getARedirect(redirect)} */}
+        <h5 className="">{cartTitle}</h5>
+        <p className="small text-muted text-uppercase mb-2">{cartCategory}</p>
+        <p className="text-center my-0">
           <span>
-            <i class="bi bi-star-fill text-warning px-1" />
+            <i className="bi bi-star-fill text-warning px-1" />
           </span>
           <span>
-            <i class="bi bi-star-fill text-warning px-1" />
+            <i className="bi bi-star-fill text-warning px-1" />
           </span>
           <span>
-            <i class="bi bi-star-fill text-warning px-1" />
+            <i className="bi bi-star-fill text-warning px-1" />
           </span>
           <span>
-            <i class="bi bi-star-half text-warning px-1" />
+            <i className="bi bi-star-half text-warning px-1" />
           </span>
           <span>
-            <i class="bi bi-star text-warning px-1" />
+            <i className="bi bi-star text-warning px-1" />
           </span>
         </p>
-        <div className="row">
-          <div className="col-6 mt-2">{showAddToCart(addtoCart)}</div>
-          <p className="col-6 btn rounded btn-sm mt-3 p-2 my-btn">
-            $ {cartPrice}
-          </p>
-          <div className="col-6 mt-2">{showRemoveFromCart(removeFromCart)}</div>
-        </div>
+        <hr />
+        <h6 className="mb-3">
+          <i className="fas fa-rupee-sign pe-2" />
+          <span>{cartPrice}</span>
+        </h6>
+        {addedbtn ? showAddedButton() : showAddToCart(addtoCart)}
+        {/* <button className="col-5 btn rounded m-1 my-btn">
+          <i className="fas fa-shopping-cart pr-2"></i>Add to cart
+        </button> */}
+        <Link
+          to={`/product/${product._id}`}
+          className="col-5 btn m-1 rounded my-btn3"
+        >
+          Details
+          <lord-icon
+            src="https://cdn.lordicon.com/msoeawqm.json"
+            trigger="loop"
+            colors="primary:#ffffff,secondary:#ffffff"
+          ></lord-icon>
+          {/* <i class="fas fa-info-circle pr-2"></i> */}
+        </Link>
       </div>
     </div>
   );

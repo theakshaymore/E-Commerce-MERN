@@ -1,7 +1,7 @@
 import React from "react";
 import Base from "./Base";
 
-function AboutUs() {
+const AboutUs = () => {
   return (
     <Base>
       <div className="container-fluid about-con">
@@ -13,11 +13,11 @@ function AboutUs() {
               <input
                 type="email"
                 className="form-control"
-                placeholder="Email Address"
+                placeholder="Email"
                 required
               />
               <div className="input-group-btn">
-                <button type="button" className="btn btn-danger">
+                <button type="button" className="btn my-btnn rounded">
                   Subscribe
                 </button>
               </div>
@@ -25,7 +25,7 @@ function AboutUs() {
           </form>
         </div>
         {/*  */}
-        <div className="container mt-5">
+        <div className="container mt-5 cart-totalbox">
           <h2 className="text-center text-warning mb-5">CONTACT</h2>
           <div className="row">
             <div className="col-sm-5">
@@ -88,12 +88,8 @@ function AboutUs() {
           </div>
         </div>
       </div>
-      <div className="text-center p-4">
-        © 2021 Copyright:
-        <span className="text-reset fw-bold">EmBrand.com</span>
-      </div>
     </Base>
   );
-}
+};
 
 export default AboutUs;

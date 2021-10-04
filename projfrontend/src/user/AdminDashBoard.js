@@ -7,39 +7,38 @@ const AdminDashBoard = ({ history }) => {
   const adminLeftSide = () => {
     return (
       <div className="card">
-        <h4 className="card-header text-white profile-card-header">
-          <i class="bi bi-arrow-return-right me-2"></i>
-          Admin Navigation
-        </h4>
+        <h5 className="card-header profile-card-header text-white bg-dark">
+          <i class="fas fa-bars me-2" />
+        </h5>
         <ul className="list-group">
           <li className="list-group-item">
-            <Link to="/admin/create/category" className="nav-link text-dark">
-              <i class="bi bi-arrow-right-circle-fill me-2"></i>
-              Create Category
-            </Link>
-          </li>
-          <li className="list-group-item">
-            <Link to="/admin/categories" className="nav-link text-dark">
-              <i class="bi bi-arrow-right-circle-fill me-2"></i>
-              Manage Categories
+            <Link to="/orders" className="nav-link text-dark">
+              <i class="fas fa-arrow-circle-right me-2" />
+              Manage All Orders
             </Link>
           </li>
           <li className="list-group-item">
             <Link to="/admin/create/product" className="nav-link text-dark">
-              <i class="bi bi-arrow-right-circle-fill me-2"></i>
-              Create Products
+              <i class="fas fa-arrow-circle-right me-2" />
+              Add New Product
             </Link>
           </li>
           <li className="list-group-item">
             <Link to="/admin/products" className="nav-link text-dark">
-              <i class="bi bi-arrow-right-circle-fill me-2"></i>
+              <i class="fas fa-arrow-circle-right me-2" />
               Manage Products
             </Link>
           </li>
           <li className="list-group-item">
-            <Link to="/orders" className="nav-link text-dark">
-              <i class="bi bi-arrow-right-circle-fill me-2"></i>
-              Manage Orders
+            <Link to="/admin/create/category" className="nav-link text-dark">
+              <i class="fas fa-arrow-circle-right me-2" />
+              Add New Category
+            </Link>
+          </li>
+          <li className="list-group-item">
+            <Link to="/admin/categories" className="nav-link text-dark">
+              <i class="fas fa-arrow-circle-right me-2" />
+              Manage Categories
             </Link>
           </li>
         </ul>
@@ -57,7 +56,7 @@ const AdminDashBoard = ({ history }) => {
         <div className="card-body">
           <div className="d-flex flex-column align-items-center text-center">
             <img
-              src="https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
+              src="https://image.flaticon.com/icons/png/512/3135/3135715.png"
               alt="Profile Image"
               className="rounded-circle"
               width="150"
@@ -70,7 +69,7 @@ const AdminDashBoard = ({ history }) => {
               </p>
               {isAutheticated() && (
                 <button
-                  className="btn btn-outline-warning"
+                  className="btn btn-outline-dark"
                   onClick={() => {
                     signout(() => {
                       history.push("/");

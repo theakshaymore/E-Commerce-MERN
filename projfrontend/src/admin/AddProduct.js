@@ -55,7 +55,7 @@ const AddProduct = () => {
     setValues({ ...values, error: "", loading: true });
     createaProduct(user._id, token, formData).then((data) => {
       if (data.error) {
-        setValues({ ...values, error: data.error });
+        setValues({ ...values, error: data.error, loading: false });
       } else {
         setValues({
           ...values,
@@ -97,6 +97,16 @@ const AddProduct = () => {
         <h4>{error}</h4>
       </div>
     );
+  };
+
+  const loadingMessage = () => {
+    if (loading) {
+      return (
+        <div className="alert alert-warning mt-3">
+          <h5>Please wait....</h5>
+        </div>
+      );
+    }
   };
 
   const createProductForm = () => (
@@ -171,7 +181,7 @@ const AddProduct = () => {
         className="btn btn-danger text-white mb-3 rounded"
       >
         Create Product
-        <i class="bi bi-bag-plus m-1" />
+        <i class="fas fa-plus-circle ms-2" />
       </button>
     </form>
   );
@@ -183,7 +193,7 @@ const AddProduct = () => {
       className="container bg-danger rounded p-4"
     >
       <Link to="/admin/dashboard" className="btn btn-md btn-dark mb-3 rounded">
-        <i className="bi bi-arrow-left-short text-white" />
+        <i class="fas fa-home me-2" />
         Admin Home
       </Link>
 
@@ -191,6 +201,7 @@ const AddProduct = () => {
         <div className="col-md-8 offset-md-2">
           {errorMessage()}
           {successMessage()}
+          {loadingMessage()}
           {createProductForm()}
         </div>
       </div>

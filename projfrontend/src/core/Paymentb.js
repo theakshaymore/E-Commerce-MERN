@@ -46,7 +46,7 @@ const Paymentb = ({ products, setReload = (f) => f, reload = undefined }) => {
             </button>
           </div>
         ) : (
-          <h3 className="alert alert-dark">No products to checkout</h3>
+          <p className="alert alert-dark">No products to checkout</p>
         )}
       </div>
     );
@@ -106,19 +106,43 @@ const Paymentb = ({ products, setReload = (f) => f, reload = undefined }) => {
 
   return (
     <div className="m-2 p-2">
-      {modal && showModal()}
-      <p className="lead fw-bold">Payment</p>
-      <div className="alert alert-dark">
-        <h3 className="lead">Total (USD) ${getAmount()}</h3>
-        <div class="row no-gutters">
-          <div class="col-3">
-            <input type="text" class="form-control" placeholder="Promo code" />
-          </div>
-          <div class="col-3">
-            <button className="btn btn-dark">Redeem</button>
-          </div>
+      <p className="lead fw-bold text-danger">
+        Payment <i class="fas fa-money-check-alt ms-2" />
+      </p>
+
+      <div class="mb-3">
+        <div class="pt-4 cart-totalbox">
+          <h5 class="mb-4 ">Expected shipping delivery</h5>
+
+          <p class="mb-0"> Thu., 12.03. - Mon., 16.03.</p>
         </div>
       </div>
+      <div class="">
+        <div class="pt-4">
+          <h5 class="mb-4">We accept</h5>
+
+          <img
+            class="me-3"
+            width="45px"
+            src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+            alt="Visa"
+          />
+          <img
+            class="me-3"
+            width="45px"
+            src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+            alt="American Express"
+          />
+          <img
+            class="me-3"
+            width="45px"
+            src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+            alt="Mastercard"
+          />
+        </div>
+      </div>
+      <div className="mt-2">{modal && showModal()}</div>
+
       {isAutheticated() ? (
         showBtDropIn()
       ) : (

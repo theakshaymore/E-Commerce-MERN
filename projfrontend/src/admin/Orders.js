@@ -35,68 +35,47 @@ const Orders = () => {
   //   };
 
   return (
-    <Base title="Welcome admin" description="Manage products here">
+    <Base title="Welcome admin" description="Manage orders here">
       <Link className="btn btn-dark" to={`/admin/dashboard`}>
-        <i className="bi bi-arrow-left-short text-white" />
+        <i class="fas fa-home me-2" />
         <span className="">Admin Home</span>
       </Link>
-      <h2 className="mt-2">All Orders:</h2>
-      <div className="row">
+      <div className="row mt-5">
         <div className="col-12">
-          {orders.map((order, index) => {
-            return (
-              <div key={index} className="row text-center">
-                <div className="col-2 list-group-item">
-                  {/* <h2 className="h5 border-bottom">Order Status</h2> */}
-                  <h3 className="btn bg-success lead text-white rounded">
-                    {order.status}
-                  </h3>
-                </div>
-                <div className="col-5 list-group-item">
-                  {/* <h2 className="h5 border-bottom">Product Name</h2> */}
-                  <h3 className="lead text-dark text-left">
-                    {order.products.map((product) => (
-                      <p>{product.name}</p>
-                    ))}
-                  </h3>
-                </div>
-                <div className="col-3 list-group-item">
-                  {/* <h2 className="h5 border-bottom">Price</h2> */}
-                  <h3 className="btn lead text-dark text-left">
-                    {order.products.map((product) => (
-                      <p>$ {product.price}</p>
-                    ))}
-                  </h3>
-                </div>
-                <div className="col-2 list-group-item">
-                  {/* <h2 className="h5 border-bottom">Quantity</h2> */}
-                  <h3 className="lead text-dark text-left">
-                    {order.products.map((product) => (
-                      <p>{product.count}</p>
-                    ))}
-                  </h3>
-                </div>
-                {/* <div className="col-4">
-                  <Link
-                    className="btn btn-success "
-                    to={`/admin/category/update/${order._id}`}
-                  >
-                    <span className="">Update</span>
-                  </Link>
-                </div>
-                <div className="col-4">
-                  <button
-                    onClick={() => {
-                      deleteThisCategory(order._id);
-                    }}
-                    className="btn btn-danger "
-                  >
-                    Delete
-                  </button>
-                </div> */}
-              </div>
-            );
-          })}
+          <table class="table table-striped">
+            <thead className="bg-dark text-white lead">
+              <tr>
+                <th scope="col">Status</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {orders.map((order, index) => {
+                return (
+                  <tr key={index}>
+                    <td className="text-success">{order.status}</td>
+                    <td>
+                      {order.products.map((product) => (
+                        <p>{product.name}</p>
+                      ))}
+                    </td>
+                    <td>
+                      {order.products.map((product) => (
+                        <p>$ {product.price}</p>
+                      ))}
+                    </td>
+                    <td>
+                      {order.products.map((product) => (
+                        <p>{product.count}</p>
+                      ))}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
     </Base>

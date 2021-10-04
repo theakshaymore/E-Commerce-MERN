@@ -16,6 +16,10 @@ import UpdateCategory from "./admin/UpdateCategory";
 import Cart from "./core/Cart";
 import Orders from "./admin/Orders";
 import AboutUs from "./core/AboutUs";
+import Testimonials from "./core/Testimonials";
+import CardDetails from "./core/CardDetails";
+import GetMyOrders from "./user/GetMyOrders";
+import Checkout from "./core/Checkout";
 
 const Routes = () => {
   return (
@@ -25,11 +29,19 @@ const Routes = () => {
         <Route path="/signup" exact component={Signup}></Route>
         <Route path="/signin" exact component={Signin}></Route>
         <Route path="/cart" exact component={Cart}></Route>
+        <Route path="/checkout" exact component={Checkout}></Route>
+        <Route path="/product/:productId" exact component={CardDetails}></Route>
         <Route path="/about" exact component={AboutUs}></Route>
+        <Route path="/testimonials" exact component={Testimonials}></Route>
         <PrivateRoutes
           path="/user/dashboard"
           exact
           component={UserDashBoard}
+        ></PrivateRoutes>
+        <PrivateRoutes
+          path="/orders/user/:userId"
+          exact
+          component={GetMyOrders}
         ></PrivateRoutes>
         <AdminRoutes
           path="/admin/dashboard"

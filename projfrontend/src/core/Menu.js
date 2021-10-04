@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { signout, isAutheticated } from "../auth/helper";
+import logoImage from "../imgs/EMBRAND.png";
 
 const currentTab = (history, path) => {
   if (history.location.pathname === path) {
-    return { color: "#e53e3e" };
+    return { color: "#e81a30" };
   } else {
     return { color: "#000000" };
   }
@@ -12,9 +13,9 @@ const currentTab = (history, path) => {
 
 const Menu = ({ history }) => (
   <div>
-    <nav className="container navbar navbar-expand-lg sticky-top bg-light">
-      <a className="navbar-brand text-dark nav-brandname" href="#">
-        Embrand.com
+    <nav className="container navbar navbar-expand-lg sticky-top">
+      <a className="navbar-brand nav-brandname" href="#">
+        Embrand
       </a>
       <button
         className="navbar-toggler"
@@ -54,7 +55,7 @@ const Menu = ({ history }) => (
               <a className="dropdown-item" href="/about">
                 About Us
               </a>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="/testimonials">
                 Testimonials
               </a>
             </div>
@@ -66,8 +67,34 @@ const Menu = ({ history }) => (
               className="nav-link"
               to="/cart"
             >
+              <i class="fas fa-shopping-cart pe-1"></i>
               Cart
             </Link>
+          </li>
+          {/* More */}
+          <li className="nav-item dropdown pe-2">
+            <a
+              className="nav-link dropdown-toggle text-dark"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              More
+            </a>
+            <div
+              className="dropdown-menu pe-2"
+              aria-labelledby="navbarDropdown"
+            >
+              <a className="dropdown-item" href="#">
+                Feature_1
+              </a>
+              <a className="dropdown-item" href="#">
+                Feature_2
+              </a>
+            </div>
           </li>
           {/* Profile */}
           {isAutheticated() && isAutheticated().user.role === 0 && (
@@ -77,6 +104,7 @@ const Menu = ({ history }) => (
                 className="nav-link"
                 to="/user/dashboard"
               >
+                <i class="far fa-user-circle pe-1"></i>
                 Profile
               </Link>
             </li>
@@ -95,7 +123,7 @@ const Menu = ({ history }) => (
           )}
           {/* Signout */}
           {isAutheticated() && (
-            <li className="nav-item pe-2">
+            <li className="nav-item">
               <span
                 className="nav-link text-white nav-btn"
                 onClick={() => {
@@ -105,10 +133,11 @@ const Menu = ({ history }) => (
                 }}
               >
                 Signout
-                <i className="bi bi-box-arrow-right ms-2 text-white" />
+                <i class="fas fa-sign-out-alt ms-2"></i>
               </span>
             </li>
           )}
+
           {/* Join/Register */}
           {!isAutheticated() && (
             <li className="nav-item dropdown">
@@ -121,25 +150,31 @@ const Menu = ({ history }) => (
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <i className="bi bi-plus" />
+                {/* <i class="fas fa-sign-in-alt me-2"></i> */}
+                <lord-icon
+                  className="lordiicon"
+                  src="https://cdn.lordicon.com/dxjqoygy.json"
+                  trigger="loop"
+                  colors="primary:#000000,secondary:#000000"
+                ></lord-icon>
                 Login/Register
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 {!isAutheticated() && (
                   <Fragment>
-                    <li className="dropdown-item">
+                    <li className="dropdown-item text-dark">
                       <Link
                         style={currentTab(history, "/signup")}
-                        className="nav-link text-white"
+                        className="nav-link"
                         to="/signup"
                       >
                         Signup
                       </Link>
                     </li>
-                    <li className="dropdown-item ">
+                    <li className="dropdown-item text-dark">
                       <Link
                         style={currentTab(history, "/signin")}
-                        className="nav-link text-white"
+                        className="nav-link"
                         to="/signin"
                       >
                         Sign In

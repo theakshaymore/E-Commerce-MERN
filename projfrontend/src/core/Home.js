@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../styles.css";
-import { API } from "../backend";
 import Base from "./Base";
+import BestSeller from "./BestSeller";
 import Card from "./Card";
+import Categories from "./Categories";
 import { getProducts } from "./helper/coreapicalls";
+import Trending from "./Trending";
+import MobileApp from "./MobileApp";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -26,28 +29,67 @@ export default function Home() {
   return (
     <div>
       <Base
-        title="Embrand"
-        description="Be exclusive, Be Devine, Be yourself."
-        className="my-5 py-5"
+      // title="Embrand"
+      // description="Be exclusive, Be Devine, Be yourself."
+      // className="my-5 py-5"
       >
-        <div className="row text-center">
-          <div className="row">
-            {products.map((product, index) => {
-              return (
-                <div key={index} className="col-lg-4 col-md-6 col-sm-12 mb-4">
-                  <Card product={product} />
-                </div>
-              );
-            })}
+        <Trending />
+        <BestSeller products={products} />
+        <Categories />
+        {/* Our Products */}
+        <div className="container my-5" id="godown">
+          <hr />
+          <h4 class="text-center cart-totalbox">
+            <strong>Our Products</strong>
+          </h4>
+          <p className="text-center mb-4 fst-italic cart-totalbox">
+            Available for men and women.
+          </p>
+          <div className="row my-5">
+            {products.map((product, index) => (
+              <div key={index} className="col-lg-4 col-md-6 col-sm-12 mb-5">
+                <Card product={product} />
+              </div>
+            ))}
           </div>
         </div>
-      </Base>
-      <footer className="footer mt-auto">
-        <div className="container-fluid bg-dark text-white text-center py-3">
-          <h5>If you got any questions, feel free to reach out</h5>
-          <button className="btn btn-warning btn-md">Contact us</button>
+        {/* Pagination */}
+        <div className="paginationAraa">
+          <nav aria-label="Page navigation example">
+            <ul className="pagination justify-content-center">
+              <li className="page-item text-secondary">
+                <a className="page-link text-secondary" href="#">
+                  1
+                </a>
+              </li>
+              <li className="page-item text-secondary">
+                <a className="page-link text-secondary" href="#">
+                  2
+                </a>
+              </li>
+              <li className="page-item text-secondary">
+                <a className="page-link text-secondary" href="#">
+                  3
+                </a>
+              </li>
+              <li className="page-item text-secondary">
+                <a className="page-link text-secondary" href="#">
+                  ..
+                </a>
+              </li>
+              <li className="page-item text-secondary">
+                <a className="page-link text-secondary" href="#">
+                  Next
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
-      </footer>
+        <hr />
+        {/* Android iOS App */}
+        <MobileApp />
+        <hr />
+      </Base>
     </div>
   );
 }

@@ -4,6 +4,8 @@ import { signout, isAutheticated } from "../auth/helper";
 import Base from "../core/Base";
 
 const UserDashBoard = ({ history }) => {
+  const { user, token } = isAutheticated();
+
   const userLeftSide = () => {
     const {
       user: { name, email, role },
@@ -13,17 +15,18 @@ const UserDashBoard = ({ history }) => {
         <div className="card-body">
           <div className="d-flex flex-column align-items-center text-center">
             <img
-              src="https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
+              src="https://image.flaticon.com/icons/png/512/3135/3135715.png"
               alt="Profile Image"
               className="rounded-circle"
               width="150"
             />
+            {/* https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg */}
             <div className="mt-3">
               <h4>{name}</h4>
               <p className="text-muted font-size-sm">{email}</p>
               {isAutheticated() && (
                 <button
-                  className="btn btn-outline-warning"
+                  className="btn btn-outline-dark"
                   onClick={() => {
                     signout(() => {
                       history.push("/");
@@ -43,10 +46,9 @@ const UserDashBoard = ({ history }) => {
   const userRightSide = () => {
     return (
       <div className="card">
-        <h4 className="card-header profile-card-header text-white">
-          <i class="bi bi-arrow-return-right me-2"></i>
-          User Navigation
-        </h4>
+        <h5 className="card-header profile-card-header text-white bg-dark">
+          <i class="fas fa-bars me-2" />
+        </h5>
         <ul className="list-group">
           <li className="list-group-item">
             {/* <Link to="/" className="nav-link text-dark"> */}
@@ -55,35 +57,36 @@ const UserDashBoard = ({ history }) => {
               data-toggle="modal"
               data-target="#exampleModal"
             >
-              <i class="bi bi-arrow-right-circle-fill me-2"></i>
-              Manage Orders
-            </button>
-            {/* </Link> */}
-          </li>
-          <li className="list-group-item">
-            {/* <Link to="/" className="nav-link text-dark"> */}
-            <button
-              className="btn"
-              data-toggle="modal"
-              data-target="#exampleModal"
-            >
-              <i class="bi bi-arrow-right-circle-fill me-2"></i>
+              <i class="fas fa-arrow-circle-right me-2" />
               Edit Profile
             </button>
             {/* </Link> */}
           </li>
-          <li className="list-group-item">
-            {/* <Link to="/" className="nav-link text-dark"> */}
+
+          {/* <li className="list-group-item">
+            <Link to="/" className="nav-link text-dark">
             <button
               className="btn"
               data-toggle="modal"
               data-target="#exampleModal"
             >
-              <i class="bi bi-arrow-right-circle-fill me-2"></i>
+              <i class="fas fa-arrow-circle-right me-2" />
               Delete Account
             </button>
-            {/* </Link> */}
-          </li>
+            </Link>
+          </li> */}
+          {/* <li className="list-group-item">
+            <Link to="/" className="nav-link text-dark">
+            <button
+              className="btn"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              <i class="fas fa-arrow-circle-right me-2" />
+              Add Address
+            </button>
+            </Link>
+          </li> */}
           <li className="list-group-item">
             {/* <Link to="/" className="nav-link text-dark"> */}
             <button
@@ -91,20 +94,23 @@ const UserDashBoard = ({ history }) => {
               data-toggle="modal"
               data-target="#exampleModal"
             >
-              <i class="bi bi-arrow-right-circle-fill me-2"></i>
-              Add Address
+              <i class="fas fa-arrow-circle-right me-2" />
+              Edit Address
             </button>
             {/* </Link> */}
           </li>
           <li className="list-group-item">
-            {/* <Link to="/" className="nav-link text-dark"> */}
+            {/* <Link
+              to={`/orders/user/${user._id}`}
+              className="nav-link text-dark"
+            > */}
             <button
               className="btn"
               data-toggle="modal"
               data-target="#exampleModal"
             >
-              <i class="bi bi-arrow-right-circle-fill me-2"></i>
-              Edit Address
+              <i class="fas fa-arrow-circle-right me-2" />
+              Manage Orders
             </button>
             {/* </Link> */}
           </li>
@@ -121,12 +127,12 @@ const UserDashBoard = ({ history }) => {
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title text-danger" id="exampleModalLabel">
+                <h5 className="modal-title text-dark" id="exampleModalLabel">
                   Under Development !
                 </h5>
                 <button
                   type="button"
-                  className="close bg-danger text-white"
+                  className="close bg-white text-dark"
                   data-dismiss="modal"
                   aria-label="Close"
                 >
@@ -139,7 +145,7 @@ const UserDashBoard = ({ history }) => {
               <div className="modal-footer">
                 <button
                   type="button"
-                  className="btn my-btnn"
+                  className="btn btn-dark"
                   data-dismiss="modal"
                 >
                   Close
@@ -158,7 +164,7 @@ const UserDashBoard = ({ history }) => {
       description="manage all of your information here.."
       className="container p-4 rounde my-profile-card"
     >
-      <div className="row">
+      <div className="row mt-5 container-fluid">
         <div className="col-lg-3 col-md-4 col-sm-12">{userLeftSide()}</div>
         <div className="col-lg-9 col-md-8 col-sm-12">{userRightSide()}</div>
       </div>

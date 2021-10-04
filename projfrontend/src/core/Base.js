@@ -4,7 +4,8 @@ import Menu from "./Menu";
 const Base = ({
   title = "",
   description = "",
-  className = "p-4",
+  className = "",
+  footer = true,
   children,
 }) => (
   <div>
@@ -17,12 +18,20 @@ const Base = ({
       <div className={className}>{children}</div>
     </div>
     {/* Footer */}
-    {/* <footer className="footer mt-auto">
-      <div className="container-fluid bg-dark text-white text-center py-3">
-        <h5>If you got any questions, feel free to reach out</h5>
-        <button className="btn btn-warning btn-md">Contact us</button>
-      </div>
-    </footer> */}
+    {footer && (
+      <footer className="footer mt-auto">
+        <div className="container-fluid bg-dark text-white text-center py-3">
+          <div className="text-center p-4">
+            © 2021 Copyright:
+            <span className="text-reset fw-bold">EmBrand.com</span>
+            <p className="pt-2">Find it, love it, buy it.</p>
+            {/* <p className="pt-2">Be exclusive, Be Devine, Be yourself.</p> */}
+          </div>
+          <h6>If you got any questions, feel free to reach out</h6>
+          {/* <button className="btn btn-warning btn-md">Contact us</button> */}
+        </div>
+      </footer>
+    )}
   </div>
 );
 
