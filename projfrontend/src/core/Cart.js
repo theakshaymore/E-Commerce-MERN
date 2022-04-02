@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../styles.css";
 import { Link } from "react-router-dom";
 import { API } from "../backend";
@@ -12,6 +12,30 @@ import CardForCart from "./CardForCart";
 const Cart = () => {
   const [products, setProducts] = useState([]);
   const [reload, setReload] = useState(false);
+  const [discount, setDiscount] = useState(0);
+  const [reedem, setReedem] = useState("");
+
+  const totalPrice = useRef();
+  const theOG = useRef();
+
+  const addDiscount = () => {
+    if (reedem == "IMPD") {
+      getAmountAfterRedeem(50);
+      totalPrice.current.style.color = "green";
+    } else if (reedem == "SLAYERVAAISEXY") {
+      getAmountAfterRedeem(150);
+      totalPrice.current.style.color = "green";
+    } else if (reedem == "RANVEERBHAISEXY" || reedem == "HARDIKBHAISEXY") {
+      getAmountAfterRedeem(200);
+      totalPrice.current.style.color = "green";
+    } else if (reedem == "BLOODCLAATYANG") {
+      getAmountAfterRedeem("OpBroOp");
+      totalPrice.current.style.color = "green";
+      // console.log(theOG);
+      theOG.current.innerHTML = "You are OG bro, You are SPECIAL";
+      theOG.current.style.color = "Green";
+    }
+  };
 
   useEffect(() => {
     setProducts(loadCart());
@@ -46,6 +70,14 @@ const Cart = () => {
       amount = amount + p.price;
     });
     return amount;
+  };
+
+  const getAmountAfterRedeem = (percent) => {
+    let amount = percent == "OpBroOp" ? 0 : 50;
+    products.map((p) => {
+      amount = amount + p.price;
+    });
+    setDiscount(amount - percent);
   };
 
   return (
@@ -87,7 +119,10 @@ const Cart = () => {
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-center px-0 mb-1">
                 Shipping
-                <span>Available</span>
+                <span>
+                  50
+                  <i className="fas fa-rupee-sign ms-1" />
+                </span>
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                 <div>
@@ -96,26 +131,35 @@ const Cart = () => {
                     <p class="mb-0">(including All Taxes)</p>
                   </strong>
                 </div>
-                <span>
+                <span ref={totalPrice} style={{ color: "black" }}>
                   <strong>
-                    {getAmount()}
+                    {discount == 0 ? getAmount() + 50 : discount}
                     <i className="fas fa-rupee-sign ms-1" />
                   </strong>
                 </span>
               </li>
             </ul>
             <div class="row">
-              <span>Add a discount code (optional)</span>
+              <span ref={theOG} style={{ color: "Black" }}>
+                Add a discount code (optional)
+              </span>
+              {/* <span className="text-muted">Add a discount code (optional)</span> */}
               <div class="col-5 mt-3">
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Enter discount code"
+                  value={reedem}
+                  onChange={(e) => setReedem(e.target.value)}
                 />
               </div>
               <div class="col-3 mt-3">
-                <button className="btn btn-dark">Redeem</button>
+                <button className="btn btn-dark" onClick={addDiscount}>
+                  Redeem
+                </button>
               </div>
+              <span className="text-muted mt-2">
+                *use code IMPD for free shipping
+              </span>
             </div>
             <Link to="/checkout" className="btn col-12 mt-5 rounded my-btn2">
               Go to checkout{" "}

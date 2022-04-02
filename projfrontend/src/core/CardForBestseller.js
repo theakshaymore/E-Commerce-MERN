@@ -78,7 +78,7 @@ const CardForBestseller = ({
   };
   return (
     <div>
-      <div className="card border-0 trending-card">
+      <div className="card border-0 my-card">
         <ImageHelper product={product} />
         <div className="card-body">
           <h5>{cartTitle}</h5>
