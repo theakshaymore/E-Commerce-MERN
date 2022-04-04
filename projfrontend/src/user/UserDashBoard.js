@@ -15,7 +15,7 @@ const UserDashBoard = ({ history }) => {
         <div className="card-body">
           <div className="d-flex flex-column align-items-center text-center">
             <img
-              src="https://image.flaticon.com/icons/png/512/3135/3135715.png"
+              src="https://cdn-icons-png.flaticon.com/512/64/64572.png"
               alt="Profile Image"
               className="rounded-circle"
               width="150"

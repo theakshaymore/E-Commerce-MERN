@@ -96,8 +96,8 @@ body {
 .my-banner {
   /* background-image: url("https://images.pexels.com/photos/7319028/pexels-photo-7319028.jpeg?auto=compress"); */
   /* background-image: url("https://images.pexels.com/photos/7319299/pexels-photo-7319299.jpeg?auto=compress"); */
-  /* background-image: url("https://images.pexels.com/photos/3062595/pexels-photo-3062595.jpeg?auto=compress"); */
-  background-image: url(./imgs/intro-1.jpg);
+  /* https://www.pexels.com/photo/photo-of-woman-leaning-on-wall-3062595/ */
+  background-image: url(imgs/intro-1.jpg);
   background-size: cover;
   height: 550px;
   width: 100%;
@@ -108,11 +108,11 @@ body {
   .my-banner {
     /* background-image: url("https://images.pexels.com/photos/7319039/pexels-photo-7319039.jpeg?auto=compress"); */
     /* background-image: url("https://images.pexels.com/photos/7319288/pexels-photo-7319288.jpeg?auto=compress"); */
-    background-image: url(./imgs/intro-3.jpg);
-
+    background-image: url(imgs/intro-2.jpg);
     background-size: cover;
-    padding: 60px 0;
     color: white;
+    padding: 100px 0px;
+    /* color: white; */
     font-weight: bold;
   }
 }

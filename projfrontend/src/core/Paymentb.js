@@ -5,8 +5,14 @@ import { cartEmpty, loadCart } from "./helper/cartHelper";
 import { getmeToken, processPayment } from "./helper/paymentBHelper";
 import { createOrder } from "./helper/orderHelper";
 import DropIn from "braintree-web-drop-in-react";
+import emailjs from "emailjs-com";
 
-const Paymentb = ({ products, setReload = (f) => f, reload = undefined }) => {
+const Paymentb = ({
+  products,
+  setReload = (f) => f,
+  reload = undefined,
+  form,
+}) => {
   const [info, setInfo] = useState({
     loading: false,
     success: false,
@@ -82,6 +88,22 @@ const Paymentb = ({ products, setReload = (f) => f, reload = undefined }) => {
           });
           // trigger modal
           setModal(true);
+          // send email
+          emailjs
+            .sendForm(
+              "service_wzybu7f",
+              "template_z4672fp",
+              form.current,
+              "8Fg-qDGxvuHkBkLSV"
+            )
+            .then(
+              (result) => {
+                console.log(result.text);
+              },
+              (error) => {
+                console.log(error.text);
+              }
+            );
           //    force reload
           setReload(!reload);
         })
@@ -101,7 +123,11 @@ const Paymentb = ({ products, setReload = (f) => f, reload = undefined }) => {
   };
 
   const showModal = () => {
-    return <p className="alert alert-success">Payment Successful</p>;
+    return (
+      <p className="alert alert-success">
+        Payment Successful!! We will notify you soon via email
+      </p>
+    );
   };
 
   return (

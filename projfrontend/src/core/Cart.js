@@ -25,7 +25,11 @@ const Cart = () => {
     } else if (reedem == "SLAYERVAAISEXY") {
       getAmountAfterRedeem(150);
       totalPrice.current.style.color = "green";
-    } else if (reedem == "RANVEERBHAISEXY" || reedem == "HARDIKBHAISEXY") {
+    } else if (
+      reedem == "RANVEERBHAISEXY" ||
+      reedem == "HARDIKBHAISEXY" ||
+      reedem == "NIKHILISHERO"
+    ) {
       getAmountAfterRedeem(200);
       totalPrice.current.style.color = "green";
     } else if (reedem == "BLOODCLAATYANG") {
@@ -33,6 +37,12 @@ const Cart = () => {
       totalPrice.current.style.color = "green";
       // console.log(theOG);
       theOG.current.innerHTML = "You are OG bro, You are SPECIAL";
+      theOG.current.style.color = "Green";
+    } else if (reedem == "RANVEERTOLTI") {
+      getAmountAfterRedeem("OpBroOp");
+      totalPrice.current.style.color = "green";
+      theOG.current.innerHTML =
+        "Congratulations !!! for getting selected for LTI 🥳🎉🎈  FREE CLOTHES FOR YOU 👔👕👖";
       theOG.current.style.color = "Green";
     }
   };

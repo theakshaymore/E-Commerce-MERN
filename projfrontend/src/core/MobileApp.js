@@ -77,6 +77,7 @@ const MobileApp = () => {
             alt="React Logo"
             height="600"
             width="450"
+            className="img-fluid"
           />
         </div>
       </div>

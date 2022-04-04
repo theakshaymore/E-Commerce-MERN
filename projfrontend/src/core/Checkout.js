@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../styles.css";
 import { Link } from "react-router-dom";
 import Base from "./Base";
@@ -8,6 +8,8 @@ import { loadCart } from "./helper/cartHelper";
 const Checkout = () => {
   const [products, setProducts] = useState([]);
   const [reload, setReload] = useState(false);
+
+  const form = useRef();
 
   useEffect(() => {
     setProducts(loadCart());
@@ -25,7 +27,7 @@ const Checkout = () => {
       <div className="my-5">
         <div className="row my-5 gx-0">
           <div className="col-lg-6 cart-totalbox">
-            <form className="ms-4">
+            <form className="ms-4" ref={form}>
               <p className="lead fw-bold text-danger">
                 Shipping address <i class="fas fa-map-marked-alt ms-2" />
               </p>
@@ -37,38 +39,41 @@ const Checkout = () => {
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder=""
+                  name="to_mobile"
                 />
               </div>
               <div className="form-group mt-2">
+                <label for="exampleInputPassword1">Email</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="exampleInputPassword1"
+                  placeholder=""
+                  name="to_email"
+                />
+              </div>
+              <div className="form-group mt-1">
                 <label for="exampleInputPassword1">Address</label>
                 <input
                   type="text"
                   className="form-control"
                   id="exampleInputPassword1"
-                  placeholder="1234 Main St"
-                />
-              </div>
-              <div className="form-group mt-1">
-                <label for="exampleInputPassword1">Address line 2</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="exampleInputPassword1"
                   placeholder="Apartment or suite"
+                  name="to_address"
                 />
               </div>
               <div class="row mt-2">
                 <div class="col">
                   <label>City</label>
-                  <input type="text" class="form-control" />
+                  <input type="text" class="form-control" name="to_city" />
                 </div>
                 <div class="col">
                   <label>State</label>
-                  <input type="text" class="form-control" />
+                  <input type="text" class="form-control" name="to_state" />
                 </div>
                 <div class="col">
                   <label>Pincode</label>
-                  <input type="text" class="form-control" />
+                  <input type="text" class="form-control" name="to_pincode" />
                 </div>
               </div>
               <div class="form-group form-check mt-2">
@@ -121,7 +126,7 @@ const Checkout = () => {
         </div>
         <div className="row">
           <div className="col-lg-6">
-            <Paymentb products={products} setReload={setReload} />
+            <Paymentb products={products} setReload={setReload} form={form} />
           </div>
         </div>
       </div>
