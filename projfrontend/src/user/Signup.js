@@ -89,7 +89,7 @@ const Signup = () => {
           </form>
         </div>
         <div className="container col-lg-5 col-md-6 col-sm-12 ">
-          <img src={SignupSVG} alt="React Logo" height="500" width="500" />
+          <img src={SignupSVG} alt="React Logo" className="img-fluid" />
         </div>
       </div>
     );

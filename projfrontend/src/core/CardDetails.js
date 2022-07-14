@@ -56,6 +56,21 @@ const CardDetails = ({ match }) => {
   return (
     <Base footer={true}>
       <div className="container">
+        <div className="container">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb ">
+              <li class="breadcrumb-item ">
+                <a href="/" className="text-danger">
+                  Home
+                </a>
+              </li>
+
+              <li class="breadcrumb-item active  " aria-current="page">
+                Details
+              </li>
+            </ol>
+          </nav>
+        </div>
         <div className="row">
           <div className="col-lg-5 mt-5 img-fluid card-det-img">
             <ImageHelper product={product} />

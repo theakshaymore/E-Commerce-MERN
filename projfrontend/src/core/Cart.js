@@ -67,6 +67,7 @@ const Cart = () => {
       </div>
     );
   };
+
   const loadCheckout = () => {
     return (
       <div>
@@ -74,6 +75,7 @@ const Cart = () => {
       </div>
     );
   };
+
   const getAmount = () => {
     let amount = 0;
     products.map((p) => {
@@ -91,18 +93,31 @@ const Cart = () => {
   };
 
   return (
-    <Base title="Shopping cart" description="" className="p-3 my-5">
-      <div className="row">
+    <Base title="" description="" className="p-0 my-5">
+      <div className="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb ">
+            <li class="breadcrumb-item ">
+              <a href="/" className="text-danger">
+                Home
+              </a>
+            </li>
+            <li class="breadcrumb-item active  " aria-current="page">
+              Cart
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <div className="row no-gutters">
         {/* Products List */}
         <div className="col-lg-6 mt-3 cart-totalbox">
           <h5 className="">
-            {/* Your cart <i class="fas fa-shopping-cart ms-2" /> */}
-            Your cart{" "}
+            {/* Your cart
             <lord-icon
               src="https://cdn.lordicon.com/fyhanzjw.json"
               trigger="loop"
               colors="primary:#121331,secondary:#e81a30"
-            ></lord-icon>
+            ></lord-icon> */}
           </h5>
           {products.length > 0 ? (
             loadAllProducts(products)
@@ -116,7 +131,7 @@ const Cart = () => {
         <div className="col-lg-6 mt-3 cart-totalbox">
           <div
             className="container card border-0 py-4 "
-            style={{ width: "400px" }}
+            style={{ width: "300px" }}
           >
             <h5 className="">The total amount of</h5>
             <ul class="list-group list-group-flush mt-5">
@@ -171,13 +186,11 @@ const Cart = () => {
                 *use code IMPD for free shipping
               </span>
             </div>
-            <Link to="/checkout" className="btn col-12 mt-5 rounded my-btn2">
-              Go to checkout{" "}
-              <lord-icon
-                src="https://cdn.lordicon.com/jvihlqtw.json"
-                trigger="loop"
-                colors="primary:#ffffff,secondary:#ffffff"
-              ></lord-icon>
+            <Link
+              to="/checkout"
+              className="btn btn-block col-12 mt-5 rounded my-btn2"
+            >
+              Go to checkout
             </Link>
           </div>
         </div>

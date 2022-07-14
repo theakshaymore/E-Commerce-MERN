@@ -31,17 +31,17 @@ const Card = ({
     }
   };
 
+  // add to cart btn
   const showAddToCart = (addtoCart) => {
     return (
       addtoCart && (
-        <button onClick={addToCart} className="col-5 btn rounded m-1 my-btn">
+        <button
+          onClick={addToCart}
+          className="col-5 btn rounded m-1 my-btn"
+          id="liveToastBtn"
+        >
           <i class="fas fa-shopping-cart pe-1"></i>
           Cart
-          {/* <lord-icon
-            src="https://cdn.lordicon.com/mecwbjnp.json"
-            trigger="loop"
-            colors="primary:#ffffff,secondary:#ffffff"
-          ></lord-icon> */}
           <lord-icon
             src="https://cdn.lordicon.com/jvihlqtw.json"
             trigger="loop"
@@ -52,14 +52,15 @@ const Card = ({
     );
   };
 
+  // after adding btn
   const showAddedButton = () => {
     return (
-      <button onClick={addToCart} className="col-5 btn rounded m-1 btn-success">
-        <span>
-          Added
-          <i class="fas fa-thumbs-up ps-2"></i>
-        </span>
-      </button>
+      <Link to="/cart">
+        <button className="col-5 btn rounded m-1 btn-success">
+          <i class="fas fa-shopping-cart pe-1"></i>
+          Go to cart
+        </button>
+      </Link>
     );
   };
 
@@ -110,9 +111,6 @@ const Card = ({
           <span>{cartPrice}</span>
         </h6>
         {addedbtn ? showAddedButton() : showAddToCart(addtoCart)}
-        {/* <button className="col-5 btn rounded m-1 my-btn">
-          <i className="fas fa-shopping-cart pr-2"></i>Add to cart
-        </button> */}
         <Link
           to={`/product/${product._id}`}
           className="col-5 btn m-1 rounded my-btn3"

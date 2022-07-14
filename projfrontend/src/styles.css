@@ -96,19 +96,24 @@ body {
 .my-banner {
   /* background-image: url("https://images.pexels.com/photos/7319028/pexels-photo-7319028.jpeg?auto=compress"); */
   /* background-image: url("https://images.pexels.com/photos/7319299/pexels-photo-7319299.jpeg?auto=compress"); */
+  /* background-image: url("https://images.pexels.com/photos/1998243/pexels-photo-1998243.jpeg"); */
   /* https://www.pexels.com/photo/photo-of-woman-leaning-on-wall-3062595/ */
-  background-image: url(imgs/intro-1.jpg);
+  background-image: url(imgs/intro-4.jpg);
   background-size: cover;
   height: 550px;
   width: 100%;
   border: none;
 }
 
+.banner-text {
+  color: white;
+}
+
 @media all and (max-width: 768px) {
   .my-banner {
     /* background-image: url("https://images.pexels.com/photos/7319039/pexels-photo-7319039.jpeg?auto=compress"); */
     /* background-image: url("https://images.pexels.com/photos/7319288/pexels-photo-7319288.jpeg?auto=compress"); */
-    background-image: url(imgs/intro-2.jpg);
+    background-image: url(imgs/intro-4-mob.jpg);
     background-size: cover;
     color: white;
     padding: 100px 0px;
@@ -118,7 +123,7 @@ body {
 }
 
 .banner-text {
-  padding-top: 170px;
+  padding-top: 220px;
 }
 
 /* Card */

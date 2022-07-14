@@ -3,7 +3,7 @@ import AndoirdandiosSVG from "../imgs/andoidandios.svg";
 
 const MobileApp = () => {
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 mobile-show-box">
       <div className="row">
         <div className="col-lg-6 container-fluid">
           <h2 className="fs-1 fw-bolder my-text">

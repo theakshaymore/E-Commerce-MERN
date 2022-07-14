@@ -17,6 +17,13 @@ const Base = ({
       </div>
       <div className={className}>{children}</div>
     </div>
+    <form>
+      <script
+        src="https://checkout.razorpay.com/v1/payment-button.js"
+        data-payment_button_id="pl_JIUPvXvLSfRnVF"
+        async
+      ></script>
+    </form>
     {/* Footer */}
     {footer && (
       <footer className="footer mt-auto">
@@ -28,7 +35,7 @@ const Base = ({
             {/* <p className="pt-2">Be exclusive, Be Devine, Be yourself.</p> */}
           </div>
           <h6>If you got any questions, feel free to reach out</h6>
-          {/* <button className="btn btn-warning btn-md">Contact us</button> */}
+          <button className="btn btn-warning btn-md">Contact us</button>
         </div>
       </footer>
     )}

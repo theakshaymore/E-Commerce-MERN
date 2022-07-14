@@ -34,12 +34,19 @@ const CardForBestseller = ({
   const showAddToCart = (addtoCart) => {
     return (
       addtoCart && (
-        <button
-          onClick={addToCart}
-          type="button"
-          className="btn btn-sm me-2 my-1 rounded my-btn2"
-        >
-          <i class="fas fa-shopping-cart"></i>Add to cart
+        <button onClick={addToCart} className="col-5 btn rounded m-1 my-btn">
+          <i class="fas fa-shopping-cart pe-1"></i>
+          Cart
+          {/* <lord-icon
+            src="https://cdn.lordicon.com/mecwbjnp.json"
+            trigger="loop"
+            colors="primary:#ffffff,secondary:#ffffff"
+          ></lord-icon> */}
+          <lord-icon
+            src="https://cdn.lordicon.com/jvihlqtw.json"
+            trigger="loop"
+            colors="primary:#ffffff,secondary:#ffffff"
+          ></lord-icon>
         </button>
       )
     );
@@ -47,14 +54,10 @@ const CardForBestseller = ({
 
   const showAddedButton = () => {
     return (
-      <button
-        onClick={addToCart}
-        type="button"
-        className="btn btn-sm btn-success me-2 my-1 rounded"
-      >
+      <button onClick={addToCart} className="col-5 btn rounded m-1 btn-success">
         <span>
           Added
-          <i class="fas fa-thumbs-up" />
+          <i class="fas fa-thumbs-up ps-2"></i>
         </span>
       </button>
     );
@@ -76,36 +79,49 @@ const CardForBestseller = ({
       )
     );
   };
+
   return (
     <div>
       <div className="card border-0 my-card">
         <ImageHelper product={product} />
-        <div className="card-body">
+        <div className="card-body text-center">
           <h5>{cartTitle}</h5>
-          <p className="small text-muted text-uppercase">{cartCategory}</p>
+          <p className="small text-muted text-uppercase mb-2">{cartCategory}</p>
+          <p className="text-center my-0">
+            <span>
+              <i className="bi bi-star-fill text-warning px-1" />
+            </span>
+            <span>
+              <i className="bi bi-star-fill text-warning px-1" />
+            </span>
+            <span>
+              <i className="bi bi-star-fill text-warning px-1" />
+            </span>
+            <span>
+              <i className="bi bi-star-half text-warning px-1" />
+            </span>
+            <span>
+              <i className="bi bi-star text-warning px-1" />
+            </span>
+          </p>
           <hr />
           <h6 className="mb-3">
-            <span className="text-danger me-1">
-              <i className="fas fa-rupee-sign" />
-              {cartPrice}
-            </span>
-            <span className="text-grey ms-2">
-              <s>
-                <i className="fas fa-rupee-sign" />
-                500
-              </s>
-            </span>
+            <i className="fas fa-rupee-sign pe-2" />
+            <span>{cartPrice}</span>
           </h6>
-          <div className="">
-            {addedbtn ? showAddedButton() : showAddToCart(addtoCart)}
 
-            <Link
-              to={`/product/${product._id}`}
-              className="btn btn-secondary btn-sm me-1 my-1 rounded "
-            >
-              <i class="fas fa-info-circle"></i>Details
-            </Link>
-          </div>
+          {addedbtn ? showAddedButton() : showAddToCart(addtoCart)}
+          <Link
+            to={`/product/${product._id}`}
+            className="col-5 btn m-1 rounded my-btn3"
+          >
+            Details
+            <lord-icon
+              src="https://cdn.lordicon.com/msoeawqm.json"
+              trigger="loop"
+              colors="primary:#ffffff,secondary:#ffffff"
+            ></lord-icon>
+          </Link>
         </div>
       </div>
     </div>

@@ -25,6 +25,25 @@ const Checkout = () => {
   return (
     <Base>
       <div className="my-5">
+        <div className="container">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb ">
+              <li class="breadcrumb-item ">
+                <a href="/" className="text-danger">
+                  Home
+                </a>
+              </li>
+              <li class="breadcrumb-item  ">
+                <a href="/cart" className="text-danger">
+                  Cart
+                </a>
+              </li>
+              <li class="breadcrumb-item active  " aria-current="page">
+                Checkout
+              </li>
+            </ol>
+          </nav>
+        </div>
         <div className="row my-5 gx-0">
           <div className="col-lg-6 cart-totalbox">
             <form className="ms-4" ref={form}>
