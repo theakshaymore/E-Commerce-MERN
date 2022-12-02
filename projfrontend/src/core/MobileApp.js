@@ -66,10 +66,10 @@ const MobileApp = () => {
             <i class="fas fa-arrow-right me-2"></i>
             Get Android App
           </button>
-          <button className="btn rounded ms-2 mt-3 my-btn3">
+          {/* <button className="btn rounded ms-2 mt-3 my-btn3">
             <i class="fas fa-arrow-right me-2"></i>
             Get iOS App
-          </button>
+          </button> */}
         </div>
         <div className="col-lg-6 container-fluid">
           <img

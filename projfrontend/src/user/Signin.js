@@ -82,13 +82,13 @@ const Signin = () => {
   // offset-sm-3
   const signInForm = () => {
     return (
-      <div className="row mt-5 pt-5">
+      <div className="row mt-5 pt-3">
         <div className="col-lg-5 container-fluid text-left">
           <h2 className="h1 text-center cart-totalbox fw-bold">
             Welcome back.
           </h2>
-          <p className="lead text-center my-text">
-            To continue, log in to Embrand
+          <p className=" text-center my-text">
+            Don't have an account? <Link to="/signup">SIGNUP</Link>
           </p>
           <form>
             <div className="form-group mt-5">
@@ -121,8 +121,13 @@ const Signin = () => {
               ></lord-icon>
             </button>
           </form>
+          <p className="text-center mt-3">or</p>
+          <a class="btn rounded-3 col-12 p-3 mt-3 btn-google bg-white" href="#">
+            <img src="https://img.icons8.com/color/16/000000/google-logo.png" />{" "}
+            Signup Using Google
+          </a>
         </div>
-        <div className="col-lg-5 container-fluid">
+        <div className="col-lg-5 container-fluid mt-5">
           <img src={SigninSVG} alt="signin" className="img-fluid" />
         </div>
       </div>

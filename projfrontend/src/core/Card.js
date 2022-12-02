@@ -121,7 +121,6 @@ const Card = ({
             trigger="loop"
             colors="primary:#ffffff,secondary:#ffffff"
           ></lord-icon>
-          {/* <i class="fas fa-info-circle pr-2"></i> */}
         </Link>
       </div>
     </div>

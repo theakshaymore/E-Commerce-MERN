@@ -42,10 +42,13 @@ const Signup = () => {
 
   const signUpForm = () => {
     return (
-      <div className="row mt-5 pt-5 gx-0">
+      <div className="row mt-5 pt-3 gx-0">
         <div className="container col-lg-5 col-md-6 col-sm-12 text-left">
           <h2 className="h1 text-center cart-totalbox">Sign up</h2>
-          <p className="lead text-center my-text">Create an Embrand Account!</p>
+          <p className=" text-center my-text">
+            Already have an account! <Link to="/signin">LOGIN</Link>
+          </p>
+
           <form>
             <div className="form-group mt-5">
               <label className="text-dark">Name</label>
@@ -87,8 +90,13 @@ const Signup = () => {
               ></lord-icon>
             </button>
           </form>
+          <p className="text-center mt-3">or</p>
+          <a class="btn rounded-3 col-12 p-3 mt-3 btn-google bg-white" href="#">
+            <img src="https://img.icons8.com/color/16/000000/google-logo.png" />{" "}
+            Signin Using Google
+          </a>
         </div>
-        <div className="container col-lg-5 col-md-6 col-sm-12 ">
+        <div className="container col-lg-5 col-md-6 col-sm-12 mt-4">
           <img src={SignupSVG} alt="React Logo" className="img-fluid" />
         </div>
       </div>

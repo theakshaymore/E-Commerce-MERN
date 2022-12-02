@@ -168,7 +168,7 @@ const Menu = ({ history }) => (
                         className="nav-link"
                         to="/signup"
                       >
-                        Signup
+                        Register
                       </Link>
                     </li>
                     <li className="dropdown-item text-dark">
@@ -177,7 +177,7 @@ const Menu = ({ history }) => (
                         className="nav-link"
                         to="/signin"
                       >
-                        Sign In
+                        Login
                       </Link>
                     </li>
                   </Fragment>

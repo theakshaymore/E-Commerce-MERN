@@ -4,6 +4,7 @@ import Base from "./Base";
 const AboutUs = () => {
   return (
     <Base>
+      {/* main container */}
       <div className="container-fluid about-con">
         <div className="jumbotron text-center about-jumbo">
           <h2 className="display-4 text-white">Embrand.com</h2>
