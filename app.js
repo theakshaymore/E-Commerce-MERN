@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
+// "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix projfrontend && npm run build"
 //My routes
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
@@ -44,15 +45,15 @@ app.use("/api", paymentBRoutes);
 const port = process.env.PORT || 8000;
 
 // heroku step
-if (process.env.NODE_ENV == "production") {
-  app.use(express.static("projfrontend/build"));
-  const path = require("path");
-  app.get("*", (req, res) => {
-    res.sendFile(
-      path.resolve(__dirname, "projfrontend", "build", "index.html")
-    );
-  });
-}
+// if (process.env.NODE_ENV == "production") {
+//   app.use(express.static("projfrontend/build"));
+//   const path = require("path");
+//   app.get("*", (req, res) => {
+//     res.sendFile(
+//       path.resolve(__dirname, "projfrontend", "build", "index.html")
+//     );
+//   });
+// }
 
 //Starting a server
 app.listen(port, () => {
